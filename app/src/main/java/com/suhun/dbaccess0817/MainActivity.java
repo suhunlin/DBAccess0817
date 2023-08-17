@@ -7,12 +7,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private String tag = MainActivity.class.getSimpleName();
     private TextView result, birthday;
     private EditText whichIdUpdate, name, tel, whichIdDelete;
     private MyDBOpenHelper myDBOpenHelper;
@@ -71,7 +73,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateFun(View view){
-
+        ContentValues values = new ContentValues();
+        String updateId = whichIdUpdate.getText().toString();
+        String updateName = name.getText().toString();
+        String updateTel = tel.getText().toString();
+        String updateBirthday = birthday.getText().toString();
+        if(updateId.equals("") || updateId.equals("Null")){
+            Log.d(tag, "-----Not input id,do nothing----");
+        }else{
+            //name
+            if(updateName.equals("") || updateName.equals("Null")){
+                Log.d(tag, "-----Not input name,do nothing----");
+            }else{
+                values.put("cname", updateName);
+            }
+            //tel
+            if(updateTel.equals("") || updateTel.equals("Null")){
+                Log.d(tag, "-----Not input tel,do nothing----");
+            }else{
+                values.put("ctel", updateTel);
+            }
+            //birthday
+            if(updateBirthday.equals("Touch to select birthday")||updateBirthday.equals("")){
+                Log.d(tag, "-----Not input bir,do nothing----");
+            }else{
+                values.put("cbirthday", updateBirthday);
+            }
+            db.update("cust", values, "cid = ?",
+                    new String[]{updateId});
+            execQuery();
+        }
     }
 
     public void deleteFun(View view){
