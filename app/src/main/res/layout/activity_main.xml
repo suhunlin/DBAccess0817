@@ -1,18 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Custom Table"
+        android:textSize="26sp"
+        android:gravity="center_horizontal"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/black"
+        />
+    <TextView
+        android:id="@+id/lid_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Null"
+        android:textSize="16sp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Query"
+        android:textAllCaps="false"
+        android:onClick="queryFun"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#999"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/updateWhichIdTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignTop="@id/lid_updateIdInput"
+            android:layout_alignBottom="@id/lid_updateIdInput"
+            android:text="Update which id:"
+            android:gravity="fill"
+            />
+        <EditText
+            android:id="@+id/lid_updateIdInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/updateWhichIdTag"
+            android:layout_alignParentRight="true"
+            android:text="Null"
+            android:inputType="number"
+            android:minHeight="48dp"
+            />
+        <TextView
+            android:id="@+id/nameTage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/updateWhichIdTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/lid_nameInput"
+            android:layout_alignBottom="@id/lid_nameInput"
+            android:text="Name:"
+            android:gravity="fill"
+            />
+        <EditText
+            android:id="@+id/lid_nameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/nameTage"
+            android:layout_below="@id/lid_updateIdInput"
+            android:layout_alignParentRight="true"
+            android:text="Null"
+            android:minHeight="48dp"
+            />
+        <TextView
+            android:id="@+id/telTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameTage"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/telTag"
+            android:layout_alignBottom="@id/lid_telInput"
+            android:text="Tel:"
+            />
+        <EditText
+            android:id="@+id/lid_telInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/telTag"
+            android:layout_below="@id/lid_nameInput"
+            android:layout_alignParentRight="true"
+            android:text="Null"
+            android:inputType="number"
+            android:minHeight="48dp"
+            />
+        <TextView
+            android:id="@+id/birthdayTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/telTag"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/lid_birthdayInput"
+            android:layout_alignBottom="@id/lid_birthdayInput"
+            android:text="Bitthday:  "
+            />
+        <TextView
+            android:id="@+id/lid_birthdayInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/birthdayTag"
+            android:layout_below="@id/lid_telInput"
+            android:layout_alignParentRight="true"
+            android:text="Touch to select birthday"
+            android:textSize="18sp"
+            android:minHeight="48dp"
+            android:onClick="dateSelectFun"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Insert"
+            android:textAllCaps="false"
+            android:layout_margin="4dp"
+            android:onClick="insertFun"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:layout_margin="4dp"
+            android:onClick="updateFun"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#999"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/delWhichIdTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignTop="@id/delWhichIdTag"
+            android:layout_alignBottom="@id/lid_deleteIdInput"
+            android:text="Del which id:"
+            />
+        <EditText
+            android:id="@+id/lid_deleteIdInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/delWhichIdTag"
+            android:layout_alignParentRight="true"
+            android:text="Null"
+            android:minHeight="48dp"
+            />
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textAllCaps="false"
+        android:onClick="deleteFun"
+        />
+</LinearLayout>
