@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             stringBuffer.append(resultString);
         }
         result.setText(stringBuffer);
+        cursor.close();
     }
 
     public void insertFun(View view){
